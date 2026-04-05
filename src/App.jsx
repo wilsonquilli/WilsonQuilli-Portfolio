@@ -38,6 +38,75 @@ function CursorDot({ dark }) {
   );
 }
 
+function AmbientBackground({ dark }) {
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        position: "fixed",
+        inset: 0,
+        pointerEvents: "none",
+        zIndex: 0,
+        overflow: "hidden",
+      }}
+    >
+      <div
+        className="ambient-orb ambient-orb-one"
+        style={{
+          position: "absolute",
+          width: "42vw",
+          height: "42vw",
+          minWidth: "320px",
+          minHeight: "320px",
+          maxWidth: "640px",
+          maxHeight: "640px",
+          top: "-8%",
+          left: "-10%",
+          borderRadius: "50%",
+          background: dark
+            ? "radial-gradient(circle, rgba(239,68,68,0.16) 0%, rgba(239,68,68,0.02) 55%, transparent 72%)"
+            : "radial-gradient(circle, rgba(30,58,138,0.14) 0%, rgba(30,58,138,0.03) 55%, transparent 72%)",
+          filter: "blur(12px)",
+        }}
+      />
+      <div
+        className="ambient-orb ambient-orb-two"
+        style={{
+          position: "absolute",
+          width: "46vw",
+          height: "46vw",
+          minWidth: "360px",
+          minHeight: "360px",
+          maxWidth: "760px",
+          maxHeight: "760px",
+          top: "28%",
+          right: "-14%",
+          borderRadius: "50%",
+          background: dark
+            ? "radial-gradient(circle, rgba(239,68,68,0.14) 0%, rgba(239,68,68,0.02) 52%, transparent 72%)"
+            : "radial-gradient(circle, rgba(30,58,138,0.12) 0%, rgba(30,58,138,0.025) 52%, transparent 72%)",
+          filter: "blur(18px)",
+        }}
+      />
+      <div
+        className="ambient-grid"
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: dark ? 0.18 : 0.12,
+          backgroundImage: dark
+            ? `linear-gradient(rgba(239,68,68,0.12) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(239,68,68,0.12) 1px, transparent 1px)`
+            : `linear-gradient(rgba(30,58,138,0.1) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(30,58,138,0.1) 1px, transparent 1px)`,
+          backgroundSize: "96px 96px",
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 85%)",
+        }}
+      />
+    </div>
+  );
+}
+
 function Navbar({ dark }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -119,6 +188,7 @@ function Hero({ dark }) {
   return (
     <section
       id="home"
+      className="hero-section"
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -160,6 +230,7 @@ function Hero({ dark }) {
       />
 
       <div
+        className="hero-content"
         style={{
           position: "relative",
           zIndex: 1,
@@ -170,6 +241,7 @@ function Hero({ dark }) {
         }}
       >
         <p
+          className="hero-eyebrow"
           style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "0.85rem",
@@ -181,10 +253,11 @@ function Hero({ dark }) {
             transition: "opacity 0.8s 0.2s",
           }}
         >
-          Hey, I'm
+          Welcome, I'm
         </p>
 
         <h1
+          className="hero-title"
           style={{
             fontFamily: "'Bebas Neue', cursive",
             fontSize: "clamp(4rem, 10vw, 9rem)",
@@ -205,6 +278,7 @@ function Hero({ dark }) {
         </h1>
 
         <div
+          className="hero-subtitle-row"
           style={{
             display: "flex",
             gap: "1rem",
@@ -216,6 +290,7 @@ function Hero({ dark }) {
         >
           
           <p
+            className="hero-subtitle"
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: "1.1rem",
@@ -223,11 +298,12 @@ function Hero({ dark }) {
               margin: 0,
             }}
           >
-            Software Developer &amp; College Student
+            Software Developer &amp; Master's Student
           </p>
         </div>
 
         <div
+          className="hero-actions"
           style={{
             marginTop: "2.5rem",
             display: "flex",
@@ -239,6 +315,7 @@ function Hero({ dark }) {
         >
           <a
             href="#projects"
+            className="hero-button"
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontWeight: 700,
@@ -272,6 +349,7 @@ function Hero({ dark }) {
           </a>
           <a
             href="mailto:wilo240105@gmail.com"
+            className="hero-button"
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontWeight: 700,
@@ -302,6 +380,7 @@ function Hero({ dark }) {
             href="/Wilson Quilli Resume.pdf"
             target = "_blank"
             rel = "noopener noreferrer"
+            className="hero-button"
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontWeight: 700,
@@ -377,6 +456,7 @@ function AboutSection({ dark }) {
     <section
       id="about"
       ref={ref}
+      className="section-shell"
       style={{
         padding: "7rem 2.5rem",
         maxWidth: "1100px",
@@ -400,6 +480,7 @@ function AboutSection({ dark }) {
           }}
         >
           <div
+            className="about-visual-card"
             style={{
               position: "relative",
               minHeight: "clamp(360px, 55vw, 520px)",
@@ -571,6 +652,7 @@ function AboutSection({ dark }) {
             ].map((item) => (
               <div
                 key={item.label}
+                className="metric-card"
                 style={{
                   padding: "1rem 1.1rem",
                   border: `1px solid ${dark ? "rgba(239,68,68,0.16)" : "rgba(30,58,138,0.12)"}`,
@@ -661,6 +743,7 @@ function SkillsStrip({ dark }) {
   ];
   return (
     <div
+      className="skills-strip-shell"
       style={{
         overflow: "hidden",
         padding: "1.2rem 0",
@@ -670,6 +753,7 @@ function SkillsStrip({ dark }) {
       }}
     >
       <div
+        className="skills-track"
         style={{
           display: "flex",
           gap: "3rem",
@@ -680,6 +764,7 @@ function SkillsStrip({ dark }) {
         {[...skills, ...skills].map((s, i) => (
           <span
             key={i}
+            className="skill-pill"
             style={{
               fontFamily: "'Bebas Neue', cursive",
               fontSize: "1.1rem",
@@ -717,6 +802,7 @@ function ProjectCard({ dark, title, desc, tags, index }) {
       ref={ref}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      className="project-card"
       style={{
         background: dark
           ? hover ? "rgba(239,68,68,0.07)" : "rgba(255,255,255,0.03)"
@@ -733,8 +819,28 @@ function ProjectCard({ dark, title, desc, tags, index }) {
         transform: vis ? "translateY(0)" : "translateY(40px)",
         transition: `opacity 0.7s ${index * 0.15}s, transform 0.7s ${index * 0.15}s cubic-bezier(0.22,1,0.36,1), background 0.3s, border-color 0.3s`,
         backdropFilter: "blur(8px)",
+        boxShadow: hover
+          ? dark
+            ? "0 24px 60px rgba(0,0,0,0.38)"
+            : "0 24px 60px rgba(30,58,138,0.12)"
+          : "none",
       }}
     >
+      <div
+        style={{
+          position: "absolute",
+          inset: "-20% auto auto -10%",
+          width: "160px",
+          height: "160px",
+          borderRadius: "50%",
+          background: dark
+            ? "radial-gradient(circle, rgba(239,68,68,0.16) 0%, transparent 72%)"
+            : "radial-gradient(circle, rgba(30,58,138,0.14) 0%, transparent 72%)",
+          opacity: hover ? 1 : 0.5,
+          transition: "opacity 0.3s ease",
+          pointerEvents: "none",
+        }}
+      />
       <div
         style={{
           position: "absolute",
@@ -803,6 +909,28 @@ function ProjectCard({ dark, title, desc, tags, index }) {
           </span>
         ))}
       </div>
+      <div
+        style={{
+          marginTop: "1.5rem",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: "1rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'Bebas Neue', cursive",
+            fontSize: "1rem",
+            letterSpacing: "0.08em",
+            color: dark ? "#ef4444" : "#1e3a8a",
+            transform: hover ? "translateX(0)" : "translateX(-6px)",
+            transition: "transform 0.25s ease",
+          }}
+        >
+          Explore →
+        </span>
+      </div>
     </div>
   );
 }
@@ -840,7 +968,23 @@ function Projects({ dark }) {
   }, []);
 
   return (
-    <section id="projects" style={{ padding: "7rem 2.5rem", maxWidth: "1100px", margin: "0 auto" }}>
+    <section id="projects" className="section-shell" style={{ padding: "7rem 2.5rem", maxWidth: "1100px", margin: "0 auto", position: "relative" }}>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          width: "240px",
+          height: "240px",
+          top: "10%",
+          right: "-4%",
+          borderRadius: "50%",
+          background: dark
+            ? "radial-gradient(circle, rgba(239,68,68,0.14) 0%, transparent 72%)"
+            : "radial-gradient(circle, rgba(30,58,138,0.12) 0%, transparent 72%)",
+          filter: "blur(8px)",
+          pointerEvents: "none",
+        }}
+      />
       <SectionLabel dark={dark} label="Selected Work" />
       <h2
         ref={ref}
@@ -932,7 +1076,7 @@ function Experience({ dark }) {
   }, []);
 
   return (
-    <section id="experience" style={{ padding: "7rem 2.5rem", maxWidth: "1100px", margin: "0 auto" }}>
+    <section id="experience" className="section-shell" style={{ padding: "7rem 2.5rem", maxWidth: "1100px", margin: "0 auto" }}>
       <SectionLabel dark={dark} label="Career" />
       <h2
         ref={ref}
@@ -961,6 +1105,7 @@ function Experience({ dark }) {
 function ExpItem({ dark, role, company, period, bullets, index, total }) {
   const ref = useRef(null);
   const [vis, setVis] = useState(false);
+  const [hover, setHover] = useState(false);
 
   useEffect(() => {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVis(true); }, { threshold: 0.15 });
@@ -971,6 +1116,9 @@ function ExpItem({ dark, role, company, period, bullets, index, total }) {
   return (
     <div
       ref={ref}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className="experience-item"
       style={{
         display: "grid",
         gridTemplateColumns: "160px 1fr",
@@ -980,8 +1128,13 @@ function ExpItem({ dark, role, company, period, bullets, index, total }) {
           ? `1px solid ${dark ? "rgba(239,68,68,0.12)" : "rgba(30,58,138,0.1)"}`
           : "none",
         opacity: vis ? 1 : 0,
-        transform: vis ? "translateY(0)" : "translateY(24px)",
-        transition: `opacity 0.7s ${index * 0.2}s, transform 0.7s ${index * 0.2}s cubic-bezier(0.22,1,0.36,1)`,
+        transform: vis ? (hover ? "translateY(-4px)" : "translateY(0)") : "translateY(24px)",
+        transition: `opacity 0.7s ${index * 0.2}s, transform 0.7s ${index * 0.2}s cubic-bezier(0.22,1,0.36,1), background 0.25s ease, border-color 0.25s ease`,
+        background: hover
+          ? dark ? "rgba(255,255,255,0.025)" : "rgba(255,255,255,0.68)"
+          : "transparent",
+        borderRadius: "10px",
+        paddingInline: "1rem",
       }}
     >
       <div>
@@ -992,6 +1145,11 @@ function ExpItem({ dark, role, company, period, bullets, index, total }) {
             color: dark ? "#ef4444" : "#1e3a8a",
             fontWeight: 700,
             letterSpacing: "0.05em",
+            display: "inline-flex",
+            padding: "0.45rem 0.7rem",
+            borderRadius: "999px",
+            border: `1px solid ${dark ? "rgba(239,68,68,0.18)" : "rgba(30,58,138,0.14)"}`,
+            background: dark ? "rgba(239,68,68,0.06)" : "rgba(30,58,138,0.05)",
           }}
         >
           {period}
@@ -1056,6 +1214,7 @@ function Contact({ dark }) {
     <section
       id="contact"
       ref={ref}
+      className="section-shell"
       style={{
         padding: "7rem 2.5rem 5rem",
         maxWidth: "1100px",
@@ -1063,70 +1222,118 @@ function Contact({ dark }) {
         textAlign: "center",
       }}
     >
-      <SectionLabel dark={dark} label="Get In Touch" />
-      <h2
+      <div
+        className="contact-panel"
         style={{
-          fontFamily: "'Bebas Neue', cursive",
-          fontSize: "clamp(3rem, 8vw, 7rem)",
-          letterSpacing: "0.03em",
-          color: dark ? "#f5f5f5" : "#0f172a",
-          margin: "0 0 1rem",
-          opacity: vis ? 1 : 0,
-          transform: vis ? "translateY(0)" : "translateY(32px)",
-          transition: "all 0.9s cubic-bezier(0.22,1,0.36,1)",
+          position: "relative",
+          overflow: "hidden",
+          borderRadius: "18px",
+          border: `1px solid ${dark ? "rgba(239,68,68,0.18)" : "rgba(30,58,138,0.12)"}`,
+          background: dark ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.8)",
+          backdropFilter: "blur(12px)",
+          padding: "clamp(2rem, 5vw, 4rem)",
+          boxShadow: dark
+            ? "0 24px 80px rgba(0,0,0,0.28)"
+            : "0 24px 80px rgba(30,58,138,0.12)",
         }}
       >
-        Let's Build
-        <br />
-        <span style={{ color: dark ? "#ef4444" : "#1e3a8a" }}>Something</span>
-      </h2>
-      <p
-        style={{
-          fontFamily: "'DM Sans', sans-serif",
-          color: dark ? "#a3a3a3" : "#475569",
-          fontSize: "1rem",
-          maxWidth: "480px",
-          margin: "0 auto 2.5rem",
-          opacity: vis ? 1 : 0,
-          transition: "opacity 0.9s 0.25s",
-        }}
-      >
-        I'm currently open to new opportunities. Whether it's a project, role, or just a conversation — my inbox is always open.
-      </p>
-      <a
-        href="mailto:wilo240105@gmail.com"
-        style={{
-          display: "inline-block",
-          fontFamily: "'DM Sans', sans-serif",
-          fontWeight: 700,
-          fontSize: "0.85rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "#fff",
-          background: dark ? "#ef4444" : "#1e3a8a",
-          padding: "1rem 2.5rem",
-          borderRadius: "2px",
-          textDecoration: "none",
-          boxShadow: dark ? "0 4px 32px rgba(239,68,68,0.4)" : "0 4px 32px rgba(30,58,138,0.35)",
-          transition: "transform 0.2s, box-shadow 0.2s",
-          opacity: vis ? 1 : 0,
-          transitionDelay: "0.45s",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-4px) scale(1.02)";
-          e.currentTarget.style.boxShadow = dark
-            ? "0 12px 40px rgba(239,68,68,0.55)"
-            : "0 12px 40px rgba(30,58,138,0.5)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "translateY(0) scale(1)";
-          e.currentTarget.style.boxShadow = dark
-            ? "0 4px 32px rgba(239,68,68,0.4)"
-            : "0 4px 32px rgba(30,58,138,0.35)";
-        }}
-      >
-        Say Hello →
-      </a>
+        <div
+          className="contact-ring"
+          style={{
+            position: "absolute",
+            width: "280px",
+            height: "280px",
+            borderRadius: "50%",
+            border: `1px dashed ${dark ? "rgba(239,68,68,0.28)" : "rgba(30,58,138,0.18)"}`,
+            top: "-80px",
+            right: "-60px",
+            opacity: 0.8,
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: "auto auto -80px -60px",
+            width: "220px",
+            height: "220px",
+            borderRadius: "50%",
+            background: dark
+              ? "radial-gradient(circle, rgba(239,68,68,0.18) 0%, transparent 70%)"
+              : "radial-gradient(circle, rgba(30,58,138,0.14) 0%, transparent 70%)",
+            filter: "blur(10px)",
+          }}
+        />
+        <SectionLabel dark={dark} label="Get In Touch" />
+        <h2
+          style={{
+            fontFamily: "'Bebas Neue', cursive",
+            fontSize: "clamp(3rem, 8vw, 7rem)",
+            letterSpacing: "0.03em",
+            color: dark ? "#f5f5f5" : "#0f172a",
+            margin: "0 0 1rem",
+            opacity: vis ? 1 : 0,
+            transform: vis ? "translateY(0)" : "translateY(32px)",
+            transition: "all 0.9s cubic-bezier(0.22,1,0.36,1)",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          Let's Build
+          <br />
+          <span style={{ color: dark ? "#ef4444" : "#1e3a8a" }}>Something</span>
+        </h2>
+        <p
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            color: dark ? "#a3a3a3" : "#475569",
+            fontSize: "1rem",
+            maxWidth: "560px",
+            margin: "0 auto 2.5rem",
+            opacity: vis ? 1 : 0,
+            transition: "opacity 0.9s 0.25s",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          I'm currently open to new opportunities. Whether it's a project, role, or just a conversation — my inbox is always open.
+        </p>
+        <a
+          href="mailto:wilo240105@gmail.com"
+          style={{
+            display: "inline-block",
+            fontFamily: "'DM Sans', sans-serif",
+            fontWeight: 700,
+            fontSize: "0.85rem",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "#fff",
+            background: dark ? "#ef4444" : "#1e3a8a",
+            padding: "1rem 2.5rem",
+            borderRadius: "999px",
+            textDecoration: "none",
+            boxShadow: dark ? "0 4px 32px rgba(239,68,68,0.4)" : "0 4px 32px rgba(30,58,138,0.35)",
+            transition: "transform 0.2s, box-shadow 0.2s",
+            opacity: vis ? 1 : 0,
+            transitionDelay: "0.45s",
+            position: "relative",
+            zIndex: 1,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "translateY(-4px) scale(1.02)";
+            e.currentTarget.style.boxShadow = dark
+              ? "0 12px 40px rgba(239,68,68,0.55)"
+              : "0 12px 40px rgba(30,58,138,0.5)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "translateY(0) scale(1)";
+            e.currentTarget.style.boxShadow = dark
+              ? "0 4px 32px rgba(239,68,68,0.4)"
+              : "0 4px 32px rgba(30,58,138,0.35)";
+          }}
+        >
+          Say Hello →
+        </a>
+      </div>
     </section>
   );
 }
@@ -1289,6 +1496,16 @@ export default function Portfolio() {
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        html, body, #root {
+          width: 100%;
+          min-height: 100%;
+        }
+
+        body {
+          background: ${bg};
+          overflow-x: hidden;
+        }
+
         html { scroll-behavior: smooth; }
 
         @keyframes marquee {
@@ -1300,6 +1517,184 @@ export default function Portfolio() {
           0%   { opacity: 1; transform: scaleY(1); transform-origin: top; }
           50%  { opacity: 0.4; transform: scaleY(0.4); transform-origin: top; }
           100% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+        }
+
+        @keyframes ambientFloat {
+          0%   { transform: translate3d(0, 0, 0) scale(1); }
+          50%  { transform: translate3d(2%, -3%, 0) scale(1.05); }
+          100% { transform: translate3d(0, 0, 0) scale(1); }
+        }
+
+        @keyframes ambientFloatReverse {
+          0%   { transform: translate3d(0, 0, 0) scale(1); }
+          50%  { transform: translate3d(-3%, 2%, 0) scale(0.98); }
+          100% { transform: translate3d(0, 0, 0) scale(1); }
+        }
+
+        @keyframes pulseBorder {
+          0%   { box-shadow: 0 0 0 0 ${dark ? "rgba(239,68,68,0.18)" : "rgba(30,58,138,0.14)"}; }
+          70%  { box-shadow: 0 0 0 18px rgba(0,0,0,0); }
+          100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+        }
+
+        @keyframes spinSlow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        .ambient-orb-one {
+          animation: ambientFloat 16s ease-in-out infinite;
+        }
+
+        .ambient-orb-two {
+          animation: ambientFloatReverse 20s ease-in-out infinite;
+        }
+
+        .hero-badge:first-child {
+          animation: pulseBorder 3.4s ease-in-out infinite;
+        }
+
+        .about-visual-card {
+          animation: ambientFloatReverse 14s ease-in-out infinite;
+        }
+
+        .skills-strip-shell {
+          position: relative;
+          mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        }
+
+        .skills-track {
+          will-change: transform;
+        }
+
+        .skill-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .project-card:hover {
+          transform: translateY(-10px) !important;
+        }
+
+        .metric-card {
+          transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .metric-card:hover {
+          transform: translateY(-4px);
+          box-shadow: ${dark ? "0 18px 40px rgba(0,0,0,0.24)" : "0 18px 40px rgba(30,58,138,0.08)"};
+        }
+
+        .contact-ring {
+          animation: spinSlow 18s linear infinite;
+        }
+
+        @media (min-width: 1025px) {
+          .hero-section {
+            padding-inline: 4rem;
+          }
+
+          .hero-content {
+            width: min(100%, 960px);
+            margin-inline: auto;
+            text-align: center;
+          }
+
+          .hero-eyebrow {
+            margin-bottom: 1.25rem !important;
+          }
+
+          .hero-title {
+            max-width: 820px;
+            font-size: clamp(6.25rem, 9vw, 8.5rem) !important;
+            line-height: 0.84 !important;
+            letter-spacing: 0.03em !important;
+            margin-inline: auto !important;
+            text-align: center;
+          }
+
+          .hero-subtitle-row {
+            justify-content: center;
+            margin-top: 1.75rem !important;
+          }
+
+          .hero-subtitle {
+            font-size: 1.05rem !important;
+            max-width: 560px;
+            text-align: center;
+          }
+
+          .hero-actions {
+            justify-content: center;
+            align-items: center;
+            gap: 1.1rem !important;
+            max-width: 920px;
+            margin-inline: auto;
+            margin-top: 2.25rem !important;
+          }
+
+          .hero-button {
+            flex: 0 0 auto;
+            white-space: nowrap;
+            padding: 0.95rem 1.7rem !important;
+          }
+        }
+
+        @media (max-width: 1024px) {
+          .ambient-grid {
+            backgroundSize: 52px 52px !important;
+          }
+
+          .hero-section {
+            padding-top: 6rem !important;
+            padding-bottom: 4rem !important;
+          }
+
+          .hero-badges {
+            gap: 0.55rem !important;
+            margin-top: 1.1rem !important;
+          }
+
+          .hero-badge {
+            font-size: 0.62rem !important;
+            letter-spacing: 0.12em !important;
+            padding: 0.52rem 0.78rem !important;
+          }
+
+          .hero-actions {
+            justify-content: center;
+          }
+
+          .hero-button {
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+          }
+
+          .skills-strip-shell {
+            mask-image: none;
+          }
+
+          .experience-item {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+            padding-inline: 0 !important;
+            border-radius: 0 !important;
+            background: transparent !important;
+          }
+
+          .contact-panel {
+            padding: 2rem 1.25rem !important;
+            border-radius: 14px !important;
+          }
+
+          .contact-ring {
+            width: 180px !important;
+            height: 180px !important;
+            right: -40px !important;
+            top: -40px !important;
+          }
         }
 
         ::selection {
@@ -1318,6 +1713,7 @@ export default function Portfolio() {
         }
       `}</style>
 
+      <AmbientBackground dark={dark} />
       <CursorDot dark={dark} />
 
       <div
@@ -1326,6 +1722,8 @@ export default function Portfolio() {
           minHeight: "100vh",
           transition: "background 0.5s ease",
           color: dark ? "#f5f5f5" : "#0f172a",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <Navbar dark={dark} />
