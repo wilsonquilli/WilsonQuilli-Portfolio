@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
- import { FaReact, FaJs, FaPython, FaGit, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { FaReact, FaJs, FaPython, FaGit, FaHtml5, FaCss3Alt } from "react-icons/fa";
 import { SiCplusplus, SiPostgresql, SiTailwindcss } from "react-icons/si";
 
 function useTheme() {
@@ -540,48 +540,10 @@ function AboutSection({ dark }) {
                 gap: "1rem",
               }}
             >
-              <div
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  borderRadius: "50%",
-                  border: `2px solid ${dark ? "#ef4444" : "#1e3a8a"}`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: dark ? "#ef4444" : "#1e3a8a",
-                  fontFamily: "'Bebas Neue', cursive",
-                  fontSize: "2rem",
-                  letterSpacing: "0.08em",
-                }}
-              >
-                WQ
-              </div>
-              <span
-                style={{
-                  fontFamily: "'Bebas Neue', cursive",
-                  fontSize: "1.1rem",
-                  letterSpacing: "0.12em",
-                  color: dark ? "#f5f5f5" : "#0f172a",
-                }}
-              >
-                Placeholder Image
-              </span>
-              <span
-                style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "0.8rem",
-                  letterSpacing: "0.16em",
-                  textTransform: "uppercase",
-                  color: dark ? "#a3a3a3" : "#64748b",
-                }}
-              >
-                Add your photo here
-              </span>
+              <img class="max-w-full h-auto" src="Wil.jpeg" alt="Picture of me with Nittany Lion from PSU" />
             </div>
           </div>
         </div>
-
         <div
           style={{
             opacity: vis ? 1 : 0,
@@ -783,7 +745,7 @@ function SkillsStrip({ dark }) {
   );
 }
 
-function ProjectCard({ dark, title, desc, tags, index }) {
+function ProjectCard({ dark, title, desc, tags, image, liveLink, repoLink, index }) {
   const ref = useRef(null);
   const [vis, setVis] = useState(false);
   const [hover, setHover] = useState(false);
@@ -814,7 +776,7 @@ function ProjectCard({ dark, title, desc, tags, index }) {
         padding: "2rem",
         position: "relative",
         overflow: "hidden",
-        cursor: "pointer",
+        cursor: liveLink || repoLink ? "pointer" : "default",
         opacity: vis ? 1 : 0,
         transform: vis ? "translateY(0)" : "translateY(40px)",
         transition: `opacity 0.7s ${index * 0.15}s, transform 0.7s ${index * 0.15}s cubic-bezier(0.22,1,0.36,1), background 0.3s, border-color 0.3s`,
@@ -852,6 +814,52 @@ function ProjectCard({ dark, title, desc, tags, index }) {
           transition: "height 0.4s cubic-bezier(0.22,1,0.36,1)",
         }}
       />
+
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "280px",
+          marginBottom: "1.5rem",
+          borderRadius: "4px",
+          overflow: "hidden",
+          border: `1px solid ${dark ? "rgba(239,68,68,0.14)" : "rgba(30,58,138,0.12)"}`,
+          background: dark
+            ? "linear-gradient(135deg, rgba(239,68,68,0.14), rgba(255,255,255,0.04))"
+            : "linear-gradient(135deg, rgba(30,58,138,0.12), rgba(255,255,255,0.92))",
+        }}
+      >
+        {image ? (
+          <img
+            src={image}
+            alt={`${title} preview`}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              objectPosition: "center",
+              display: "block",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "'Bebas Neue', cursive",
+              fontSize: "1.1rem",
+              letterSpacing: "0.12em",
+              color: dark ? "rgba(245,245,245,0.6)" : "rgba(15,23,42,0.55)",
+              textTransform: "uppercase",
+            }}
+          >
+            Add Project Image
+          </div>
+        )}
+      </div>
 
       <div
         style={{
@@ -913,23 +921,63 @@ function ProjectCard({ dark, title, desc, tags, index }) {
         style={{
           marginTop: "1.5rem",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "flex-start",
           alignItems: "center",
           gap: "1rem",
+          flexWrap: "wrap",
         }}
       >
-        <span
-          style={{
-            fontFamily: "'Bebas Neue', cursive",
-            fontSize: "1rem",
-            letterSpacing: "0.08em",
-            color: dark ? "#ef4444" : "#1e3a8a",
-            transform: hover ? "translateX(0)" : "translateX(-6px)",
-            transition: "transform 0.25s ease",
-          }}
-        >
-          Explore →
-        </span>
+        {liveLink ? (
+          <a
+            href={liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: "'Bebas Neue', cursive",
+              fontSize: "1rem",
+              letterSpacing: "0.08em",
+              color: dark ? "#ef4444" : "#1e3a8a",
+              transform: hover ? "translateX(0)" : "translateX(-6px)",
+              transition: "transform 0.25s ease",
+              textDecoration: "none",
+            }}
+          >
+            Explore →
+          </a>
+        ) : null}
+
+        {repoLink ? (
+          <a
+            href={repoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: "'Bebas Neue', cursive",
+              fontSize: "1rem",
+              letterSpacing: "0.08em",
+              color: dark ? "#f5f5f5" : "#0f172a",
+              transform: hover ? "translateX(0)" : "translateX(-6px)",
+              transition: "transform 0.25s ease",
+              textDecoration: "none",
+            }}
+          >
+            GitHub →
+          </a>
+        ) : null}
+
+        {!liveLink && !repoLink ? (
+          <span
+            style={{
+              fontFamily: "'Bebas Neue', cursive",
+              fontSize: "1rem",
+              letterSpacing: "0.08em",
+              color: dark ? "#ef4444" : "#1e3a8a",
+              opacity: 0.55,
+            }}
+          >
+            Add links
+          </span>
+        ) : null}
       </div>
     </div>
   );
@@ -938,24 +986,36 @@ function ProjectCard({ dark, title, desc, tags, index }) {
 function Projects({ dark }) {
   const projects = [
     {
-      title: "Keynes AI",
+      title: "Keynes AI - Stock Predictor",
       desc: "Full-stack Application. Developed machine learning model achieving 65% prediction accuracy on stock price movement. Built responsive frontend interface using JavaScript, HTML, CSS for real-time interaction Collaborated in agile team environment using Git/GitHub version Control.",
       tags: ["Python", "JavaScript", "HTML", "CSS"],
+      image: "",
+      liveLink: "",
+      repoLink: "https://github.com/wilsonquilli/KeynesAI.git",
     },
     {
-      title: "Task Manager App",
-      desc: "Full-stack productivity app with real-time updates, drag-and-drop boards, and JWT authentication.",
-      tags: ["Node.js", "React", "PostgreSQL"],
+      title: "Fysics is Phun - Web App Game",
+      desc: "Built a scalable real-time classroom game supporting 15-25 users with synchronized multi-role gameplay via WebSockets; developed a FastAPI backend with session orchestration, automated scoring, and low-latency performance; led creation of 15+ responsive React interfaces and key features including deck import/export and analytics reporting in a 7-person team.",
+      tags: ["Python", "React", "WebSockets", "TailwindCSS"],
+      image: "FIP.png",
+      liveLink: "https://cs487wfysicsisphun.vercel.app/host",
+      repoLink: "https://github.com/AlrJohn/CS487W_Fysics_is_Phun.git",
     },
     {
-      title: "E-Commerce Platform",
-      desc: "Scalable storefront with Stripe integration, product search, and admin dashboard.",
-      tags: ["Next.js", "Stripe", "TailwindCSS"],
+      title: "Testly - AI Study App",
+      desc: "An AI app for students to use to study for exams. Students can paste their notes or upload a pdf and the AI will create practice quizzes and flashcards for students to use.",
+      tags: ["Python", "React", "TailwindCSS", "Next.js", "PostgreSQL"],
+      image: "",
+      liveLink: "",
+      repoLink: "https://github.com/wilsonquilli/Testly.git",
     },
     {
       title: "Data Dashboard",
       desc: "Interactive analytics dashboard visualizing real-time metrics with custom chart components.",
       tags: ["TypeScript", "D3.js", "REST API"],
+      image: "",
+      liveLink: "",
+      repoLink: "",
     },
   ];
 
