@@ -988,9 +988,9 @@ function Projects({ dark }) {
     {
       title: "Keynes AI - Stock Predictor",
       desc: "Full-stack Application. Developed machine learning model achieving 65% prediction accuracy on stock price movement. Built responsive frontend interface using JavaScript, HTML, CSS for real-time interaction Collaborated in agile team environment using Git/GitHub version Control.",
-      tags: ["Python", "JavaScript", "HTML", "CSS"],
-      image: "",
-      liveLink: "",
+      tags: ["Python", "React", "Supabase", "Machine Learning"],
+      image: "KeynesAI.png",
+      liveLink: "https://keynes-ai.vercel.app/",
       repoLink: "https://github.com/wilsonquilli/KeynesAI.git",
     },
     {
