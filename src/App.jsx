@@ -410,7 +410,7 @@ function Hero({ dark }) {
                 : "0 4px 24px rgba(30,58,138,0.3)";
             }}
           >
-            View Resume (April 5th, 2026)
+            View Resume (April 28th, 2026)
           </a>
         </div>
       </div>
@@ -987,7 +987,7 @@ function Projects({ dark }) {
   const projects = [
     {
       title: "Keynes AI - Stock Predictor",
-      desc: "Full-stack Application. Developed machine learning model achieving 65% prediction accuracy on stock price movement. Built responsive frontend interface using JavaScript, HTML, CSS for real-time interaction Collaborated in agile team environment using Git/GitHub version Control.",
+      desc: "Full-stack Application. Developed machine learning model achieving 65% prediction accuracy on stock price movement. Built responsive frontend interface using React, TailWindCSS for real-time interaction Collaborated in agile team environment using Git/GitHub version Control.",
       tags: ["Python", "React", "Supabase", "Machine Learning"],
       image: "KeynesAI.png",
       liveLink: "https://keynes-ai.vercel.app/",
@@ -1002,7 +1002,7 @@ function Projects({ dark }) {
       repoLink: "https://github.com/AlrJohn/CS487W_Fysics_is_Phun.git",
     },
     {
-      title: "Testly - AI Study App",
+      title: "Testly - AI Study App (WIP)",
       desc: "An AI app for students to use to study for exams. Students can paste their notes or upload a pdf and the AI will create practice quizzes and flashcards for students to use.",
       tags: ["Python", "React", "TailwindCSS", "Next.js", "PostgreSQL"],
       image: "",
@@ -1010,13 +1010,21 @@ function Projects({ dark }) {
       repoLink: "https://github.com/wilsonquilli/Testly.git",
     },
     {
-      title: "Data Dashboard",
-      desc: "Interactive analytics dashboard visualizing real-time metrics with custom chart components.",
-      tags: ["TypeScript", "D3.js", "REST API"],
-      image: "",
+      title: "Mushrooom Classifier",
+      desc: "Full-stack mushroom classification project with a Flask backend and React frontend. The app supports two machine-learning workflows: • A tabular data-mining classifier trained on the UCI Mushroom dataset. • A safety-first image classifier that accepts a mushroom photo and predicts whether the mushroom should be treated as edible, avoid, or uncertain.",
+      tags: ["React", "Python", "Machine Learning", "Image Processing", "Flask", "TailWindCSS"],
+      image: "MC.jpeg",
       liveLink: "",
-      repoLink: "",
+      repoLink: "https://github.com/wilsonquilli/Data-Mining-Mushroom-Classifier.git",
     },
+    {
+      title: "FootyForecast",
+      desc: "FootyForecast combines a FastAPI backend with a React/Vite frontend to deliver data-driven football predictions for upcoming fixtures. The project focuses on Premier League matchups, blending curated team strength/form profiles with machine learning models to produce win/draw/loss probabilities, suggested outcomes, and projected scorelines.",
+      tags: ["Python", "React", "Application Programming Interface (API)", "Machine Learning", "Artificial Intelligence"],
+      image: "FootyForecast.jpeg",
+      liveLink: "",
+      repoLink: "https://github.com/wilsonquilli/FootyForecast-Sports-Predictor.git",
+    }
   ];
 
   const ref = useRef(null);
@@ -1106,23 +1114,14 @@ function SectionLabel({ dark, label }) {
 function Experience({ dark }) {
   const exp = [
     {
-      role: "Software Developer Intern",
-      company: "Tech Company",
-      period: "2024 — Present",
+      role: "Software Engineer",
+      company: "Penn State University",
+      period: "Jan 2026 — May 2026",
       bullets: [
-        "Built and maintained React components across the product suite",
-        "Improved API response times by 30% through query optimization",
-        "Collaborated in agile sprints with a cross-functional team of 8",
-      ],
-    },
-    {
-      role: "Freelance Web Developer",
-      company: "Self-Employed",
-      period: "2023 — 2024",
-      bullets: [
-        "Delivered 5+ client websites from design to deployment",
-        "Integrated payment and CMS systems for small businesses",
-        "Maintained 100% client satisfaction rating",
+        "Developed a web application game for our client to use in a classroom setting, called Fysics is Phun. Developed using a React frontend and Python backend",
+        "Architected a WebSocket-based multiplayer platform supporting 15-25 concurrent users with synchronized multi-role gameplay (Host, Player, Jury), resulting in a production-ready real-time system",
+        "Engineered a FastAPI backend with role-based session orchestration and automated scoring pipelines by implementing configurable multi-stage game logic, achieving low-latency interactions across all devices",
+        "Led frontend development of 15+ responsive React interfaces and delivered analytics reporting (CSV/Excel export) by collaborating in a 7-member agile team, shipping a polished end-to-end product on schedule",
       ],
     },
   ];
