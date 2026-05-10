@@ -608,7 +608,7 @@ function AboutSection({ dark }) {
           >
             {[
               { label: "Education", value: "Penn State" },
-              { label: "GPA", value: "3.79 / 4.00" },
+              { label: "GPA", value: "3.81 / 4.00" },
               { label: "Graduate Track", value: "M.S. Expected Dec 2027" },
               { label: "Leadership", value: "AI Club Treasurer" },
             ].map((item) => (
