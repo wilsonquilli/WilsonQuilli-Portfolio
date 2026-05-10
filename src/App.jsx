@@ -1024,6 +1024,14 @@ function Projects({ dark }) {
       image: "FootyForecast.jpeg",
       liveLink: "",
       repoLink: "https://github.com/wilsonquilli/FootyForecast-Sports-Predictor.git",
+    },
+    {
+      title: "Flappy Bird Evolutions",
+      desc: "Flappy Bird Evolutions is a multi-level Flappy Bird remake built with Python, pygame, and opencv-python. The game starts with classic Flappy Bird and gradually shifts into themed stages with new visuals, music, movement changes, and hazards.",
+      tags: ["Python", "PyGame", "Pixel Art"],
+      image: "FlappyBirdEvoCover.png",
+      liveLink: "https://wilito2401.itch.io/flappy-bird-evolutions",
+      repoLink: "https://github.com/wilsonquilli/FlappyBirdEvolutions.git",
     }
   ];
 
